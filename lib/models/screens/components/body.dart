@@ -1,13 +1,18 @@
 import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/models/Product.dart';
 import 'package:flutter/material.dart';
+
+import 'categories.dart';
+import 'item_card.dart';
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: kDefaultPaddin.toDouble()),
+          padding: EdgeInsets.symmetric(horizontal: kDefaultPaddin),
           child: Text(
             "Women",
             style: Theme.of(context)
@@ -17,31 +22,24 @@ class Body extends StatelessWidget {
           ),
         ),
         Categories(),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
+            child: GridView.builder(
+              itemCount: products.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.75,
+                mainAxisSpacing: kDefaultPaddin,
+                crossAxisSpacing: kDefaultPaddin,
+              ),
+              itemBuilder: (context, index) => ItemCard(
+                product: products[index],
+              ),
+            ),
+          ),
+        )
       ],
-    );
-  }
-}
-
-class Categories extends StatefulWidget {
-  @override
-  _CategoriesState createState() => _CategoriesState();
-}
-
-class _CategoriesState extends State<Categories> {
-  List<String> categories = ["Hand bag", "Jewellery", "Footwear", "Dresses"];
-  int selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 25,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) => Text(
-          categories[index],
-        ),
-      ),
     );
   }
 }
