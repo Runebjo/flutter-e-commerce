@@ -1,7 +1,8 @@
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/models/screens/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'components/body.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

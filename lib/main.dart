@@ -1,5 +1,5 @@
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/models/screens/home_screen.dart';
+import 'package:e_commerce/models/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
