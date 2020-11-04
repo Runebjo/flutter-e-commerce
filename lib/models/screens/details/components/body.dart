@@ -1,8 +1,8 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/models/Product.dart';
 import 'package:flutter/material.dart';
-
 import 'color_and_size.dart';
+import 'counter_with_fav_btn.dart';
 import 'description.dart';
 import 'product_title_with_image.dart';
 
@@ -38,7 +38,7 @@ class Body extends StatelessWidget {
                       children: [
                         ColorAndSize(product: product),
                         Description(product: product),
-                        CartCounter()
+                        CounterWithFavBtn()
                       ],
                     )),
                 ProductTitleWithImage(product: product)
@@ -46,45 +46,6 @@ class Body extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class CartCounter extends StatefulWidget {
-  @override
-  _CartCounterState createState() => _CartCounterState();
-}
-
-class _CartCounterState extends State<CartCounter> {
-  int numOfItems = 1;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        buildOutlineButton(),
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: kDefaultPaddin / 2,
-          ),
-          child: Text(
-            "01",
-            style: Theme.of(context).textTheme.headline6,
-          ),
-        )
-      ],
-    );
-  }
-
-  SizedBox buildOutlineButton() {
-    return SizedBox(
-      width: 40,
-      height: 32,
-      child: OutlineButton(
-        padding: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
-        onPressed: () {},
-        child: Icon(Icons.remove),
       ),
     );
   }
