@@ -1,6 +1,7 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/models/Product.dart';
 import 'package:flutter/material.dart';
+import 'add_to_cart.dart';
 import 'color_and_size.dart';
 import 'counter_with_fav_btn.dart';
 import 'description.dart';
@@ -20,27 +21,32 @@ class Body extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
-                    margin: EdgeInsets.only(top: size.height * 0.35),
-                    padding: EdgeInsets.only(
-                      top: size.height * 0.12,
-                      left: kDefaultPaddin,
-                      right: kDefaultPaddin,
+                  margin: EdgeInsets.only(top: size.height * 0.35),
+                  padding: EdgeInsets.only(
+                    top: size.height * 0.08,
+                    left: kDefaultPaddin,
+                    right: kDefaultPaddin,
+                  ),
+                  height: 500,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24),
                     ),
-                    height: 500,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(24),
-                        topRight: Radius.circular(24),
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        ColorAndSize(product: product),
-                        Description(product: product),
-                        CounterWithFavBtn()
-                      ],
-                    )),
+                  ),
+                  child: Column(
+                    children: [
+                      ColorAndSize(product: product),
+                      SizedBox(height: kDefaultPaddin / 2),
+                      Description(product: product),
+                      SizedBox(height: kDefaultPaddin / 2),
+                      CounterWithFavBtn(),
+                      SizedBox(height: kDefaultPaddin / 2),
+                      AddToCart(product: product)
+                    ],
+                  ),
+                ),
                 ProductTitleWithImage(product: product)
               ],
             ),
